@@ -36,6 +36,7 @@ export default async function CategoryPage({
     .from("data")
     .select("id, title, category, created_at, is_done")
     .eq("category", category)
+    .eq("is_done" , false)
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -51,10 +52,8 @@ export default async function CategoryPage({
 
 
   return (
-    <main className="p-6 max-w-xl mx-auto">
-      <h1 className="text-2xl font-bold mb-4">{category}</h1>
-
-      <ul className="space-y-2">
+    <main className="p-5 max-w-xl mx-auto">
+      <ul className="space-y-3">
         {data?.map((item) => (
           <li key={item.id} className="border rounded-xl p-3">
             <Card text={item.title} id={item.id} isDone={item.is_done}/>
