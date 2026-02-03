@@ -23,8 +23,8 @@ export default function NavBar() {
   const [error, setError] = useState<string | null>(null);
 
   return (
-    <nav className="fixed left-1/2 -translate-x-1/2 z-50 p-3">
-      <div className="flex gap-6">
+    <nav className="flex flex-col items-center pb-3">
+      <div className="flex gap-5">
         {navItems.map(({ href, emoji, label }) => (
           <Link
             key={href}
@@ -49,11 +49,12 @@ export default function NavBar() {
         ))}
 
       </div>
-      <div className="flex items-end justify-end pt-10">
+      <div className="flex items-center justify-between w-full pt-4 pr-4 pl-7">
+        <h4 className="text-2xl font-extrabold items-start">{pathname.slice(1).toLocaleUpperCase()}</h4>
         <button className="flex items-center justify-center
               w-14 h-14
               rounded-full
-              bg-[#A27b5b]/40
+              bg-[#A27b5b]/30
               backdrop-blur-xl
               border border-white/30
               shadow-lg

@@ -33,16 +33,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${storyScript.className} antialiased bg-[#2c3639]`}
+        className={`${storyScript.className} antialiased bg-[#A27B5B]`}
       
       >
         
-        <div className="mx-auto max-w-97.5 min-h-screen bg-[#2c3639]">
-          <header className="">
+        <div className="mx-auto max-w-97.5 min-h-screen bg-[#A27B5B]">
+          <header className="sticky top-0 z-50 bg-[#3F4E4F]">
             <h1 className="text-6xl font-bold text-center p-4">JoAz</h1>
             <NavBar />
           </header>
-          {children}
+          <main className="pt-4">
+            {children}
+          </main>
         </div>
       </body>
     </html>
