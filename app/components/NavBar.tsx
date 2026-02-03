@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Modal from "./Modal";
 import { supabase } from "@/lib/supabase/client";
 
@@ -10,16 +10,17 @@ const navItems = [
   { href: "/watchlist", emoji: "📺", label: "Watchlist", category: "Watchlist" },
   { href: "/dates", emoji: "🎆", label: "Dates", category: "Dates" },
   { href: "/notes", emoji: "🧡🩵", label: "Notes", category: "Notes" },
+  { href: "/done", emoji: "✔️", label: "Done", category: "Done" },
 ] as const;
 
 
 export default function NavBar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [category, setCategory] = useState("Food");
   const [title, setTitle] = useState("");
   const [error, setError] = useState<string | null>(null);
-
 
   return (
     <nav className="fixed left-1/2 -translate-x-1/2 z-50 p-3">
@@ -88,6 +89,8 @@ export default function NavBar() {
                 setTitle("");
                 setCategory("Food");
                 setIsModalOpen(false);
+                router.refresh();
+                
             }}>
                 <h2 className="text-lg font-semibold mb-4">Add new</h2>
 

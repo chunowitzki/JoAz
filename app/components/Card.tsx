@@ -1,5 +1,6 @@
 "use client"
 import React from 'react'
+import { useRouter } from 'next/navigation'
 import { supabase } from "@/lib/supabase/client";
 
 type Text = {
@@ -11,6 +12,7 @@ type Text = {
 
 
 const Card = ({ text, id, isDone }: Text) => {
+  const router = useRouter()
   const [testDone, setTestDone] = React.useState(!!isDone)
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const nextValue = e.target.checked; // what the user chose
@@ -28,6 +30,9 @@ const Card = ({ text, id, isDone }: Text) => {
     if (error) {
       setTestDone(!nextValue);
       console.error(error.message);
+    } else {
+      // 4️⃣ refresh to update the server-rendered list
+      router.refresh();
     }
   };
   return (
