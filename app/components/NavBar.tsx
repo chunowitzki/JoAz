@@ -123,14 +123,14 @@ export default function NavBar() {
                 <button
                     type="button"
                     onClick={() => setIsModalOpen(false)}
-                    className="px-4 py-2 rounded-lg bg-gray-200"
+                    className="px-4 py-2 rounded-lg bg-[gray-200] border-1"
                 >
                     Cancel
                 </button>
 
                 <button
                     type="submit"
-                    className="px-4 py-2 rounded-lg bg-black text-white"
+                    className="px-4 py-2 rounded-lg bg-[#3F4E4F] border-1 text-white"
                 >
                     Add
                 </button>
