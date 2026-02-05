@@ -78,25 +78,25 @@ const Card = ({ text, id, isDone }: Text) => {
   }
 };
   return (
-    <div className='flex gap-5'>
-        <input type="checkbox" checked={testDone} className='w-5 h-5 accent-green-500' onChange={handleChange}/>
+    <div className='flex items-center gap-3 sm:gap-5'>
+        <input type="checkbox" checked={testDone} className='w-6 h-6 accent-green-500 flex-shrink-0' onChange={handleChange}/>
 
         {isEditing ? (
-        <input 
+        <input
           type="text"
           value={editedText}
           onChange={(e) => setEditedText(e.target.value)}
           onBlur={updateText}
           onKeyDown={(e) => e.key === 'Enter' && updateText()}
-          className='border px-2 py-1 rounded flex-1'
+          className='border px-3 py-2 rounded flex-1 text-base min-w-0'
           autoFocus
         />
       ) : (
-        <span onClick={() => setIsEditing(true)} className='cursor-pointer flex-1'>
+        <span onClick={() => setIsEditing(true)} className='cursor-pointer flex-1 min-w-0 break-words'>
           {text}
         </span>
       )}
-        <button className='ml-auto' onClick={() => handleDelete(id)}><Trash className='h-4'/></button>
+        <button className='p-2 flex-shrink-0' onClick={() => handleDelete(id)}><Trash className='h-5 w-5'/></button>
     </div>
   )
 }

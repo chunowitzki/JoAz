@@ -23,8 +23,8 @@ export default function NavBar() {
   const [error, setError] = useState<string | null>(null);
 
   return (
-    <nav className="flex flex-col items-center pb-3">
-      <div className="flex gap-5">
+    <nav className="flex flex-col items-center pb-2 sm:pb-3">
+      <div className="flex gap-2 sm:gap-4">
         {navItems.map(({ href, emoji, label }) => (
           <Link
             key={href}
@@ -32,7 +32,7 @@ export default function NavBar() {
             aria-label={label}
             className="
               flex items-center justify-center
-              w-14 h-14
+              w-11 h-11 sm:w-14 sm:h-14
               rounded-full
               bg-white/20
               backdrop-blur-xl
@@ -43,16 +43,16 @@ export default function NavBar() {
               active:scale-95
             "
           >
-            <span className="text-2xl">{emoji}</span>
+            <span className="text-xl sm:text-2xl">{emoji}</span>
           </Link>
 
         ))}
 
       </div>
-      <div className="flex items-center justify-between w-full pt-4 pr-4 pl-7">
-        <h4 className="text-2xl font-extrabold items-start">{pathname.slice(1).toLocaleUpperCase()}</h4>
+      <div className="flex items-center justify-between w-full pt-3 sm:pt-4 px-4">
+        <h4 className="text-xl sm:text-2xl font-extrabold">{pathname.slice(1).toLocaleUpperCase()}</h4>
         <button className="flex items-center justify-center
-              w-14 h-14
+              w-11 h-11 sm:w-14 sm:h-14
               rounded-full
               bg-[#A27b5b]/30
               backdrop-blur-xl
@@ -60,7 +60,7 @@ export default function NavBar() {
               shadow-lg
               transition
               hover:bg-white/30
-              active:scale-95 text-2xl" 
+              active:scale-95 text-xl sm:text-2xl" 
             onClick={() => {
               const match = navItems.find((item) => item.href === pathname);
               setCategory(match?.category ?? "Food");
@@ -71,7 +71,7 @@ export default function NavBar() {
                 +
         </button>
         <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
-            <form className="w-[320px]" onSubmit={async (e) => {
+            <form className="w-full" onSubmit={async (e) => {
                 e.preventDefault()
                 setError(null)
 
@@ -97,7 +97,7 @@ export default function NavBar() {
 
                 <label className="block text-sm mb-2">
                 Category
-                <select className="mt-1 w-full rounded-lg border p-2" onChange={(e) => setCategory(e.target.value)} value={category}>
+                <select className="mt-1 w-full rounded-lg border p-3 text-base" onChange={(e) => setCategory(e.target.value)} value={category}>
                     {navItems.map((item) => (
                       <option key={item.category} value={item.category}>
                         {item.label}
@@ -109,7 +109,7 @@ export default function NavBar() {
                 <label className="block text-sm mb-4">
                 Title
                 <input
-                    className="mt-1 w-full rounded-lg border p-2"
+                    className="mt-1 w-full rounded-lg border p-3 text-base"
                     placeholder="New item..."
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}

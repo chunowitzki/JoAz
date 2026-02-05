@@ -27,10 +27,10 @@ if (error) {
 }
 
   return (
-    <main className="p-6 max-w-xl mx-auto">
-      <ul className="space-y-2">
+    <main className="px-4 py-2 sm:p-6 max-w-xl mx-auto">
+      <ul className="space-y-3">
         {data?.map((item) => (
-          <li key={item.id} className="border rounded-xl p-3">
+          <li key={item.id} className="border rounded-xl p-4">
             <Card text={item.title} id={item.id} isDone={item.is_done}/>
           </li>
         ))}

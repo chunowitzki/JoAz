@@ -39,7 +39,7 @@ export default function RootLayout({
         
         <div className="mx-auto max-w-97.5 min-h-screen bg-[#2C3639]">
           <header className="sticky top-0 z-50 bg-[#3F4E4F]">
-            <h1 className="text-6xl font-bold text-center p-4">JoAz</h1>
+            <h1 className="text-3xl sm:text-5xl font-bold text-center p-3 sm:p-4">JoAz</h1>
             <NavBar />
           </header>
           <main className="pt-4">
