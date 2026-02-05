@@ -24,7 +24,7 @@ export default function NavBar() {
 
   return (
     <nav className="flex flex-col items-center pb-2 sm:pb-3">
-      <div className="flex gap-2 sm:gap-4">
+      <div className="flex gap-3 sm:gap-4">
         {navItems.map(({ href, emoji, label }) => (
           <Link
             key={href}
@@ -32,7 +32,7 @@ export default function NavBar() {
             aria-label={label}
             className="
               flex items-center justify-center
-              w-11 h-11 sm:w-14 sm:h-14
+              w-12 h-12 sm:w-14 sm:h-14
               rounded-full
               bg-white/20
               backdrop-blur-xl
@@ -43,7 +43,7 @@ export default function NavBar() {
               active:scale-95
             "
           >
-            <span className="text-xl sm:text-2xl">{emoji}</span>
+            <span className="text-xl sm:text-xl">{emoji}</span>
           </Link>
 
         ))}
