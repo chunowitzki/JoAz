@@ -2,6 +2,8 @@ import React from 'react'
 import { createClient } from "@supabase/supabase-js";
 import Card from '../components/Card';
 
+export const dynamic = "force-dynamic";
+
 const donePage = async () => {
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
