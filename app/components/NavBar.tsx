@@ -24,7 +24,7 @@ export default function NavBar() {
 
   return (
     <nav className="flex flex-col items-center pb-2 sm:pb-3">
-      <div className="flex gap-3 sm:gap-4">
+      <div className="flex gap-5 sm:gap-3">
         {navItems.map(({ href, emoji, label }) => (
           <Link
             key={href}
