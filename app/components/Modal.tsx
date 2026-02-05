@@ -45,7 +45,7 @@ export default function Modal({ open, onClose, title, children }: ModalProps) {
         className="
           relative z-10 w-full sm:max-w-sm
           rounded-t-3xl sm:rounded-3xl
-          bg-[#DCD7C9]/70 backdrop-blur-xl
+          bg-[#A27B5B]/90 backdrop-blur-xl
           border border-white/40
           shadow-2xl
           p-5

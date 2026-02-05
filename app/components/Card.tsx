@@ -3,6 +3,7 @@ import React from 'react'
 import { useRouter } from 'next/navigation'
 import { supabase } from "@/lib/supabase/client";
 import { Trash } from 'lucide-react'
+import { title } from 'process';
 
 type Text = {
     text: string
@@ -16,6 +17,27 @@ type Text = {
 const Card = ({ text, id, isDone }: Text) => {
   const router = useRouter()
   const [testDone, setTestDone] = React.useState(!!isDone)
+   const[isEditing, setIsEditing] = React.useState(false);
+  const [editedText, setEditedText] = React.useState(text);
+
+  const updateText = async () => {
+    try {
+      const { error } = await supabase
+        .from('data')
+        .update({ title: editedText })
+        .eq('id', id);
+
+      if (error) throw error;
+      
+      setIsEditing(false);
+      console.log('Card updated successfully');
+      router.refresh();
+    } catch (error) {
+      console.error('Error updating card:', error);
+    }
+  };
+
+
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const nextValue = e.target.checked; // what the user chose
 
@@ -58,7 +80,22 @@ const Card = ({ text, id, isDone }: Text) => {
   return (
     <div className='flex gap-5'>
         <input type="checkbox" checked={testDone} className='w-5 h-5 accent-green-500' onChange={handleChange}/>
-        <span>{text}</span>
+
+        {isEditing ? (
+        <input 
+          type="text"
+          value={editedText}
+          onChange={(e) => setEditedText(e.target.value)}
+          onBlur={updateText}
+          onKeyDown={(e) => e.key === 'Enter' && updateText()}
+          className='border px-2 py-1 rounded flex-1'
+          autoFocus
+        />
+      ) : (
+        <span onClick={() => setIsEditing(true)} className='cursor-pointer flex-1'>
+          {text}
+        </span>
+      )}
         <button className='ml-auto' onClick={() => handleDelete(id)}><Trash className='h-4'/></button>
     </div>
   )
